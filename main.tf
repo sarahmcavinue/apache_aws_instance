@@ -23,12 +23,11 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "app_server" {
-  #ami = "ami-0fa60ab544ecd97e0"
-  ami = "ami-02df7c0eecb64fb85"
-  instance_type = "t4g.nano"
-  key_name = "${aws_key_pair.deployer.key_name}"
+  ami                    = "ami-02df7c0eecb64fb85"
+  instance_type          = "t4g.nano"
+  key_name               = "${aws_key_pair.deployer.key_name}"
   vpc_security_group_ids = [aws_security_group.sg_my_server.id]
-  user_data = data.template_file.user_data.rendered
+  user_data              = data.template_file.user_data.rendered
   /*
   provisioner "local-exec" {
     command = "echo ${self.private_ip} >> /Users/Sarah/Desktop/ec2-user/private_ips.txt"
@@ -90,8 +89,8 @@ resource "aws_security_group" "sg_my_server" {
     protocol         = "tcp"
     cidr_blocks      = ["78.19.173.229/32"]
     ipv6_cidr_blocks = []
-    prefix_list_ids = []
-    security_groups = []
+    prefix_list_ids  = []
+    security_groups  = []
     self = false
   }
 
@@ -102,8 +101,8 @@ resource "aws_security_group" "sg_my_server" {
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
-    prefix_list_ids = []
-    security_groups = []
+    prefix_list_ids  = []
+    security_groups  = []
     self = false
   }
 
@@ -114,5 +113,5 @@ resource "aws_security_group" "sg_my_server" {
 
 
 data "aws_vpc" "main" {
-  id = "vpc-09f9753f1e0310663"
+  id = "vpc-XXXXX"
 }
