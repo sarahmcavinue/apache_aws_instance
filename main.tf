@@ -39,9 +39,9 @@ resource "aws_instance" "app_server" {
     "echo ${self.private_ip} >> /home/ec2-user/private_ips.txt"
     ]
     connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    host     = "${self.public_ip}"
+    type        = "ssh"
+    user        = "ec2-user"
+    host        = "${self.public_ip}"
     private_key = "${file("/Users/Sarah/.ssh/new_key")}"
   }
 
@@ -49,12 +49,12 @@ resource "aws_instance" "app_server" {
 
   */
 provisioner "file" {
-    content = "mars"
+    content     = "mars"
     destination = "/home/ec2-user/barsoon.txt"
     connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    host     = "${self.public_ip}"
+    type        = "ssh"
+    user        = "ec2-user"
+    host        = "${self.public_ip}"
     private_key = "${file("/Users/Sarah/.ssh/new_key")}"
   }
 
@@ -77,8 +77,8 @@ resource "aws_security_group" "sg_my_server" {
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = []
-    prefix_list_ids = []
-    security_groups = []
+    prefix_list_ids  = []
+    security_groups  = []
     self = false
   }
 
