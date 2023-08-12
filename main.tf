@@ -14,7 +14,7 @@ provider "aws" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKzvdN3/zS2owjwPPx4jlnaAmhWg+mfMF6rg64PNkrWD Sarah@MacBook-Pro.local"
+  public_key = var.pub_key
   
 }
 
